@@ -1,6 +1,154 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>DJEVA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin:0;
+      font-family:'Inter', sans-serif;
+      background:white;
+      color:black;
+    }
+
+    nav {
+      display:flex;
+      justify-content:space-between;
+      padding:20px;
+      border-bottom:1px solid #eee;
+    }
+
+    nav h1 {
+      font-family:'Playfair Display';
+      letter-spacing:3px;
+    }
+
+    .hero {
+      height:70vh;
+      background:url('img1.jpg') center/cover;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:35px;
+      font-family:'Playfair Display';
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      padding:40px;
+    }
+
+    .card {
+      text-align:center;
+    }
+
+    .card img {
+      width:100%;
+      height:320px;
+      object-fit:cover;
+    }
+
+    button {
+      border:1px solid black;
+      background:none;
+      padding:8px 15px;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    button:hover {
+      background:black;
+      color:white;
+    }
+
+    .contact {
+      padding:40px;
+      text-align:center;
+      border-top:1px solid #eee;
+    }
+
+    iframe {
+      width:100%;
+      height:300px;
+      border:none;
+      margin-top:20px;
+    }
+
+    footer {
+      text-align:center;
+      padding:20px;
+      border-top:1px solid #eee;
+      font-size:14px;
+    }
+  </style>
+</head>
+
 <body>
-<h1>DJEVA işləyir 🔥</h1>
+
+<nav>
+  <h1>🍓 DJEVA</h1>
+  <div>@djevastudio</div>
+</nav>
+
+<div class="hero">
+  NEW COLLECTION
+</div>
+
+<div class="grid" id="products"></div>
+
+<div class="contact">
+  <h2>Əlaqə</h2>
+  <p>📞 033 033</p>
+  <p>📍 Xətai rayonu</p>
+
+  <iframe src="https://maps.google.com/maps?q=Xetai%20Baku&output=embed"></iframe>
+
+  <button onclick="orderAll()">WhatsApp sifariş</button>
+</div>
+
+<footer>
+  Sabi Orudjeva tərəfindən dizayn olundu
+</footer>
+
+<script>
+let items = [
+  {name:"Qadın Köynək", price:35, img:"img1.jpg"},
+  {name:"Cins Şalvar", price:50, img:"img2.jpg"},
+  {name:"Yay Donu", price:60, img:"img3.jpg"}
+];
+
+function render(){
+  let html="";
+  items.forEach(i=>{
+    html+=`
+      <div class="card">
+        <img src="${i.img}">
+        <h3>${i.name}</h3>
+        <p>${i.price} AZN</p>
+        <button onclick="order('${i.name}',${i.price})">Sifariş et</button>
+      </div>
+    `;
+  });
+  document.getElementById("products").innerHTML=html;
+}
+
+function order(name,price){
+  let text = "Salam, DJEVA mağazasından sifariş: " + name + " - " + price + " AZN";
+  window.open("https://wa.me/994XXXXXXXXX?text="+encodeURIComponent(text));
+}
+
+function orderAll(){
+  window.open("https://wa.me/994XXXXXXXXX");
+}
+
+render();
+</script>
+
 </body>
 </html>
