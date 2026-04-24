@@ -109,7 +109,7 @@
 
   <iframe src="https://maps.google.com/maps?q=Xetai%20Baku&output=embed"></iframe>
 
-  <button onclick="orderAll()">WhatsApp sifariş</button>
+  <button onclick="order()">WhatsApp sifariş</button>
 </div>
 
 <footer>
@@ -118,9 +118,9 @@
 
 <script>
 let items = [
-  {name:"Qadın Köynək", price:35, img:"img1.jpg"},
-  {name:"Cins Şalvar", price:50, img:"img2.jpg"},
-  {name:"Yay Donu", price:60, img:"img3.jpg"}
+  {name:"Sabi", img:"img1.jpg"},
+  {name:"Orudjeva", img:"img2.jpg"},
+  {name:"Minion", img:"https://images.unsplash.com/photo-1520975922284-9e0ce8275f8c"}
 ];
 
 function render(){
@@ -130,21 +130,16 @@ function render(){
       <div class="card">
         <img src="${i.img}">
         <h3>${i.name}</h3>
-        <p>${i.price} AZN</p>
-        <button onclick="order('${i.name}',${i.price})">Sifariş et</button>
+        <button onclick="order('${i.name}')">Sifariş et</button>
       </div>
     `;
   });
   document.getElementById("products").innerHTML=html;
 }
 
-function order(name,price){
-  let text = "Salam, DJEVA mağazasından sifariş: " + name + " - " + price + " AZN";
+function order(name){
+  let text = "Salam, DJEVA mağazasından sifariş etmək istəyirəm: " + name;
   window.open("https://wa.me/994XXXXXXXXX?text="+encodeURIComponent(text));
-}
-
-function orderAll(){
-  window.open("https://wa.me/994XXXXXXXXX");
 }
 
 render();
